@@ -16,6 +16,7 @@ require('config.php');
   <link rel="stylesheet" href="/cinema/admin/assets/css/tailwind.output.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="/cinema/admin/assets/js/init-alpine.js"></script>
+  <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5-stable/tinymce.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@ require('config.php');
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div class="py-4 text-gray-500 dark:text-gray-400">
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-          Windmill
+          RajHans Cinema 
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
