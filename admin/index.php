@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Login";
 // require('auth-header.php');
 require('config.php');

@@ -1,5 +1,8 @@
-<?php session_start(); ?>
-<?php require('config.php'); ?>
+<?php 
+session_start();
+require('config.php'); 
+?>
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 

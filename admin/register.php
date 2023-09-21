@@ -101,7 +101,7 @@ if (isset($_POST['add_create'])) {
             </button>
             <hr class="my-8" />
             <p class="mt-4 text-center">
-              <span>Already have an account?</span><a href="index.php">Login</a>
+              <span>Already have an account?</span><a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="index.php">Login</a>
             </p>
           </form>
         </div>
