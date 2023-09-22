@@ -1,6 +1,13 @@
-<?php 
+<?php
 session_start();
-require('config.php'); 
+require('config.php');
+
+$sql = "SELECT u.id,u.user_name,u.email,u.phone_no,u.profile,u.is_active,ut.type_name FROM users as u,user_type as ut 
+where u.id = " . $_SESSION['id'] . " and ut.id = u.user_type_id";
+// echo $sql;
+$result = $conn->query($sql);
+$row = mysqli_fetch_assoc($result);
+// var_dump($row);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +23,8 @@ require('config.php');
   <link rel="stylesheet" href="/cinema/admin/assets/css/tailwind.output.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="/cinema/admin/assets/js/init-alpine.js"></script>
-  <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5-stable/tinymce.min.js"></script>
+  <script
+    src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5-stable/tinymce.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +33,7 @@ require('config.php');
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div class="py-4 text-gray-500 dark:text-gray-400">
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-          RajHans Cinema 
+          Movies
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
@@ -132,9 +140,13 @@ require('config.php');
                 <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
                   @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                   aria-haspopup="true">
-                  <img class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                    alt="" aria-hidden="true" />
+                 
+                  <?php if ($row['profile']): ?>
+                    <img src="/cinema/admin/<?php echo $row['profile']; ?>" width="35" height="35" class="rounded-circle"
+                      data-bs-toggle="tooltip" class="mb-0 fs-3" title=<?php echo ucwords($row['type_name']); ?>>
+                  <?php else: ?>
+                    <img src="/cinema/admin/profiles/Default.jpg" alt="" width="35" height="35" class="rounded-circle">
+                  <?php endif; ?>
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
@@ -149,6 +161,16 @@ require('config.php');
                           <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                         <span>Profile</span>
+                      </a>
+                    </li>
+                    <li class="flex">
+                      <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                        href="/cinema/admin/changepassword.php">
+                        <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span>Change Password</span>
                       </a>
                     </li>
 

@@ -53,6 +53,9 @@ $row = mysqli_fetch_assoc($result);
       <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Profile Info
       </h4>
+      <?php if ($message != "") {
+        echo $message;
+      } ?>
       <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <label class="block text-sm">
           <span class="text-gray-700 dark:text-gray-400">Name</span>
@@ -78,7 +81,7 @@ $row = mysqli_fetch_assoc($result);
         <button type=" submit"
           class="block w-medium px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
           name="update_profile">
-          Submit
+          Update Profile
         </button>
 
       </div>
