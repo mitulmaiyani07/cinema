@@ -1,16 +1,16 @@
 <?php
-$title = "Add Category";
+$title = "Add Movie";
 require('../header.php');
 $message = "";
 if (isset($_POST['add_type'])) {
 
     $is_uploaded = false;
 
-    if (isset($_FILES["cat_image"]["name"]) && $_FILES["cat_image"]["name"] != "") {
+    if (isset($_FILES["movie_image"]["name"]) && $_FILES["movie_image"]["name"] != "") {
 
-        $filename = $_FILES["cat_image"]["name"];
+        $filename = $_FILES["movie_image"]["name"];
 
-        $tempname = $_FILES["cat_image"]["tmp_name"];
+        $tempname = $_FILES["movie_image"]["tmp_name"];
 
         $folder = "./images/" . $filename;
 
@@ -23,14 +23,14 @@ if (isset($_POST['add_type'])) {
             $message = "<div class = 'alert alert-danger'>  Failed to upload image!</div>";
         }
     }
-    $cat_name = $_POST['cat_name'];
-    $cat_desc = $_POST['cat_desc'];
+    $movie_name = $_POST['movie_name'];
+    $movie_desc = $_POST['movie_desc'];
     $current_user_id = $_SESSION['id'];
 
     if ($is_uploaded == true) {
-        $sql = "insert into movie_category (cat_name,cat_image,cat_desc,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$cat_name','$folder','$cat_desc',$current_user_id,$current_user_id,true,false,now(),now())";
+        $sql = "insert into movie (movie_name,movie_image,movie_desc,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$folder','$movie_desc',$current_user_id,$current_user_id,true,false,now(),now())";
     } else {
-        $sql = "insert into movie_category (cat_name,cat_desc,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$cat_name','$cat_desc',$current_user_id,$current_user_id,true,false,now(),now())";
+        $sql = "insert into movie (movie_name,movie_desc,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$movie_desc',$current_user_id,$current_user_id,true,false,now(),now())";
     }
 
     if (mysqli_query($conn, $sql)) {
@@ -45,7 +45,7 @@ if (isset($_POST['add_type'])) {
     <main class="h-full pb-16 overflow-y-auto">
         <div class="container px-6 mx-auto grid">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                Add Category
+                Add Movie
             </h2>
             <?php if ($message != "") {
                 echo $message;
@@ -55,17 +55,17 @@ if (isset($_POST['add_type'])) {
                     <span class="text-gray-700 dark:text-gray-400">Add</span>
                     <input type="text"
                         class="bloc k w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="Add " name="cat_name" />
+                        placeholder="Add " name="movie_name" />
                 </label>
                 <label class=" block text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Category Image</span>
+                    <span class="text-gray-700 dark:text-gray-400">Movie Image</span>
                     <input type="file"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder=" Category Image" name="cat_image" />
+                        placeholder=" Category Image" name="movie_image" />
                 </label>
                 <label class="block text-sm">
                     <span class="text-gray-700 dark:text-gray-400">Description</span>
-                    <textarea class="form-control" name="cat_desc" id="description"></textarea>
+                    <textarea class="form-control" name="movie_desc" id="description"></textarea>
 
                 </label>
                 <button type="submit"

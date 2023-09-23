@@ -18,7 +18,7 @@ require('../header.php');
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">#</th>
                             <th class="px-4 py-3">Image</th>
-                            <th class="px-4 py-3">Category_Name</th>
+                            <th class="px-4 py-3">Movie_Name</th>
                             <th class="px-4 py-3">Created_at</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
@@ -26,7 +26,7 @@ require('../header.php');
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                        
                         <?php
-                           $query = "SELECT id,cat_name,cat_image,created_at from movie_category ORDER BY id DESC";
+                           $query = "SELECT id,Movie_name,Movie_image,created_at from movie ORDER BY id DESC";
 
                            if ($result = $conn->query($query)) {
                               $i = 0;
@@ -39,15 +39,15 @@ require('../header.php');
                                     <td><?php echo $i; ?></td>
                                     <td>
                                        <?php
-                                       if ($row['cat_image'] == "")
+                                       if ($row['Movie_image'] == "")
                                           echo "-";
                                        else { ?>
-                                          <img height="150" width="120" src=" <?php echo $row['cat_image']; ?>">
+                                          <img height="150" width="120" src=" <?php echo $row['Movie_image']; ?>">
                                        <?php
                                        }
                                        ?>
                                     </td>
-                                    <td><?php echo $row['cat_name']; ?></td>
+                                    <td><?php echo $row['Movie_name']; ?></td>
                                     <td><?php echo date('d-M-Y h:i
                                     A', strtotime($row['created_at'])); ?></td>
                                     <td class="px-4 py-3">
