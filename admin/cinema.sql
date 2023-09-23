@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 06:46 PM
+-- Generation Time: Sep 23, 2023 at 06:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,7 +31,7 @@ CREATE TABLE `movie` (
   `id` int(10) NOT NULL,
   `movie_name` varchar(100) NOT NULL,
   `movie_image` varchar(200) DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
+  `movie_desc` longtext DEFAULT NULL,
   `category_id` int(20) DEFAULT NULL,
   `release_date` datetime NOT NULL,
   `is_released` tinyint(1) NOT NULL,
@@ -51,9 +51,9 @@ CREATE TABLE `movie` (
 
 CREATE TABLE `movie_category` (
   `id` int(10) NOT NULL,
-  `category_name` varchar(100) NOT NULL,
+  `cat_name` varchar(100) NOT NULL,
   `cat_image` varchar(200) DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
+  `cat_desc` longtext DEFAULT NULL,
   `created_by` int(10) DEFAULT NULL,
   `updated_by` int(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -61,6 +61,15 @@ CREATE TABLE `movie_category` (
   `is_active` tinyint(1) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `movie_category`
+--
+
+INSERT INTO `movie_category` (`id`, `cat_name`, `cat_image`, `cat_desc`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
+(37, 'test', './images/m.jpg', '<p><em><strong>test</strong></em></p>', 1, 1, '2023-09-22 14:56:02', '2023-09-22 14:56:02', 1, 0),
+(42, 'm', './images/m1.jpg', '<p>m</p>', 1, 1, '2023-09-23 16:21:42', '2023-09-23 16:21:42', 1, 0),
+(43, 'mi', './images/m1.jpg', '<p>mki</p>', 1, 1, '2023-09-23 16:42:16', '2023-09-23 16:42:16', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -89,8 +98,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `email`, `profile`, `password`, `phone_no`, `created_by`, `updated_by`, `user_type_id`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
-(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', 'MIT0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-21 21:56:10', 1, 0),
-(2, 'Kevin Kotadiya', 'kevinkotadiya428@gmail.com', '', '999', '9510935250', NULL, 2, 1, '2023-09-21 22:11:48', '2023-09-21 22:13:41', 1, 0);
+(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', '9409', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-21 21:56:10', 1, 0),
+(2, 'Kevin Kotadiya', 'kevinkotadiya428@gmail.com', '', '999', '9510935250', NULL, 2, 1, '2023-09-21 22:11:48', '2023-09-22 10:16:24', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +171,7 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `movie_category`
 --
 ALTER TABLE `movie_category`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -179,6 +188,13 @@ ALTER TABLE `user_type`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `movie_category`
+--
+ALTER TABLE `movie_category`
+  ADD CONSTRAINT `fk_mc_create_by` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mc_update_by` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
