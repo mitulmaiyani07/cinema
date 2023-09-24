@@ -24,7 +24,7 @@ if (isset($_POST['add_type'])) {
         }
     }
     $cat_name = $_POST['cat_name'];
-    $cat_desc = $_POST['cat_desc'];
+    $cat_desc = mysqli_real_escape_string($conn,$_POST['cat_desc']);
     $current_user_id = $_SESSION['id'];
 
     if ($is_uploaded == true) {

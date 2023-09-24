@@ -1,13 +1,12 @@
 <?php
 session_start();
 require('config.php');
-
-$sql = "SELECT u.id,u.user_name,u.email,u.phone_no,u.profile,u.is_active,ut.type_name FROM users as u,user_type as ut 
-where u.id = " . $_SESSION['id'] . " and ut.id = u.user_type_id";
+$sql = "SELECT u.id,u.user_name,u.email,u.phone_no,u.profile,u.is_active,ut.type_name FROM users as u,user_type as ut where u.id = " . $_SESSION['id'] . " and ut.id = u.user_type_id";
 // echo $sql;
-$result = $conn->query($sql);
+$result = $conn->query($sql); 
 $row = mysqli_fetch_assoc($result);
 // var_dump($row);
+
 ?>
 
 <!DOCTYPE html>
@@ -139,15 +138,10 @@ $row = mysqli_fetch_assoc($result);
             </template>
           </li>
         </ul>
-</ul>
+        </ul>
         </ul>
 
-
         </ul>
-
-
-
-
     </aside>
     <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
       x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
