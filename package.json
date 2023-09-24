@@ -1,5 +1,5 @@
 {
-  "name": "windmill-dashboard",
+  "name": "Cinema-dashboard",
   "version": "1.0.2",
   "description": "A multi theme, completely accessible, with components and pages examples, ready for production dashboard.",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "keywords": [
     "tailwind",
-    "windmill",
+    "Cinema",
     "dashboard",
     "template",
     "admin"
