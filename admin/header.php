@@ -6,7 +6,6 @@ $sql = "SELECT u.id,u.user_name,u.email,u.phone_no,u.profile,u.is_active,ut.type
 $result = $conn->query($sql); 
 $row = mysqli_fetch_assoc($result);
 // var_dump($row);
-
 ?>
 
 <!DOCTYPE html>

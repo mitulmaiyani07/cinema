@@ -14,7 +14,7 @@ if (isset($_POST['update_profile'])) {
 
     $tempname = $_FILES["profileimage"]["tmp_name"];
 
-    $profile_path = '/cinema/admin/assets/public/profiles/' . $filename;
+    $profile_path = '/assets/public/profiles/' . $filename;
 
     if (move_uploaded_file($tempname, $profile_path)) {
       $update_sql = "update users set user_name='$user_name',email='$email',phone_no='$phone_no', profile='$profile_path',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $_SESSION['id'];
@@ -76,6 +76,21 @@ $row = mysqli_fetch_assoc($result);
           <input
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
             placeholder="Phone No" name="phone_no" required value="<?php echo $row['phone_no']; ?>" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Profile Image</span>
+          <?php if ($row['profile']): ?>
+          <img width="180" height="180" src="/cinema/admin/<?php echo $row['profile']; ?>"
+          class="rounded-circle" alt="
+          <?php echo $row['profile']; ?>" />
+          <?php else: ?>
+            <img width="180" height="180" src="profiles/Default.jpg"
+            class="rounded-circle" alt="<?php echo $row['user_name']; ?>" />
+            <?php endif; ?>
+          <input
+            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+            placeholder="Name " name="profile" type="file" />
+            
         </label>
 
         <button type=" submit"

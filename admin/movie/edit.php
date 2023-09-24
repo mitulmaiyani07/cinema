@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
   if (isset($_POST['edit_type'])) {
     $movie_name = $_POST['movie_name'];
     $movie_desc = mysqli_real_escape_string($conn, $_POST['movie_desc']);
-    $category_id=$_POST['movie_category'];
+    $category_id = $_POST['movie_category'];
 
     if (isset($_FILES["movie_image"]) && $_FILES["movie_image"]["name"] != "") {
 
@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
       /* Check type and size */
 
       if (move_uploaded_file($tempname, $folder)) {
-        $update_sql = "update movie set movie_name='$movie_name',movie_image='$folder',movie_desc='$movie_desc',category_id'$category_id',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $id;
+        $update_sql = "update movie set movie_name='$movie_name',movie_image='$folder',movie_desc='$movie_desc',category_id='$category_id',updated_at=now(),updated_by=" . $_SESSION['id'] . " where id =  " . $id;
 
         if (mysqli_query($conn, $update_sql)) {
           $message .= "<div class='alert alert-success col-sm-11'>Category updated successfully..</div>";
@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
     }
   }
 }
-$sql = "SELECT id,movie_name,movie_image,movie_desc from movie where id = " . $id;
+$sql = "SELECT * from movie where id='". $_GET['id'] ."'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -53,36 +53,36 @@ $row = mysqli_fetch_assoc($result);
           Edit Movie
         </h2>
         <?php if ($message != "") {
-                echo $message;
-            } ?>
+          echo $message;
+        } ?>
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
           <label class="block text-sm mb-8">
             <span class="text-gray-700 dark:text-gray-400">Edit</span>
             <input
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="Edit " name="movie_name" value="<?php echo $row['movie_name']; ?>"  />
+              placeholder="Edit " name="movie_name" value="<?php echo $row['movie_name']; ?>" />
           </label>
           <label class="block text-lg ">Category</label>
-                    
-                    <select class="form-select form-control" name="movie_category" id="movie_category">
-                       <option value="">-- Select Category --</option>
-                       <?php
-                       $query = "SELECT *  from movie_category";
-                       if ($var_result = $conn->query($query)) 
-                       {
-                        $i = 0;
-                        while ($var_row = $var_result->fetch_assoc()) 
-                        {
-                            ?>
-                            <option value="<?php echo $var_row['id']; ?>">
-                            <?php echo $var_row['cat_name']; ?></option>
-                            <?php
-                            $i++;
-                        }
-                        $var_result->free();
-                    }
-                    ?>
-                    </select>
+
+          <select class="form-select form-control" name="movie_category" id="movie_category">
+            <option>--- Select Category ---</option>
+            <?php
+            $query = "SELECT *  from movie_category";
+            if ($var_result = $conn->query($query)) {
+              $i = 0;
+              while ($var_row = $var_result->fetch_assoc()) {
+                ?>
+                <option value="<?php echo $var_row['id']; ?>" <?php if($var_row['id'] == $row['category_id']) echo "selected"; ?>>
+                  <?php echo $var_row['cat_name']; ?>
+                </option>
+                <?php
+                $i++;
+              }
+              $var_result->free();
+            }
+            ?>
+
+          </select>
           <label class="block text-sm mb-8">
             <span class="text-gray-700 dark:text-gray-400">Movie Image</span>
             <input type="file"

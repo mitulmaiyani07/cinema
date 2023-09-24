@@ -32,7 +32,7 @@ if (isset($_POST['add_create'])) {
     $error_msg = "Password and Confirm password must be same.!";
   }
 }
-$_SESSION=['id'];
+// $_SESSION=['id'];
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
