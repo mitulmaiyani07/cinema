@@ -28,6 +28,7 @@
      font-weight: normal;
      overflow-x: hidden;
 }
+
  a {
      color: #1f1f1f;
      text-decoration: none !important;
@@ -971,7 +972,7 @@ transition: all 0.3s ease-in;
 }
  
  .header-top {
-     background:url(../images/banner2.jpg);
+     background:url(../images/cinema.jpg);
      background-size: 100% 100%;
      background-repeat: no-repeat;
      padding-bottom: 50px;
@@ -979,7 +980,7 @@ transition: all 0.3s ease-in;
      min-height: 980px;
 }
  .header {
-     position: absolute;
+     position: absolute;    
      z-index: 999;
      width: 100%;
      padding: 30px 0px 0px 0px;

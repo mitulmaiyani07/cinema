@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2023 at 08:09 PM
+-- Generation Time: Sep 25, 2023 at 09:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -49,7 +49,8 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`id`, `movie_name`, `movie_image`, `movie_desc`, `category_id`, `release_date`, `is_released`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
 (1, 'tjmm', './images/tjmm2023.jpg', '<p><strong>Mickey, a carefree businessman and womaniser, helps couples break up. However, things change for him when he falls for Tinni, a witty and beautiful chartered accountant.</strong></p>', 44, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 21:04:13', '2023-09-24 22:52:26', 1, 0),
-(2, 'mm', './images/jawan2023.jpg', '<p>fnxcnxcccn</p>', 37, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 22:45:06', '2023-09-24 22:45:06', 1, 0);
+(2, 'mm', './images/jawan2023.jpg', '<p>fnxcnxcccn</p>', 37, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 22:45:06', '2023-09-24 22:45:06', 1, 0),
+(3, 'Animal 2023', './images/animal2023.jpg', '<p><strong>Animal is an upcoming Indian Hindi-language action thriller film edited, written and directed by Sandeep Reddy Vanga and produced by T-Series and Cine1 Studios. The film stars Ranbir Kapoor, Anil Kapoor, Bobby Deol, Rashmika Mandanna and Tripti Dimri</strong></p>', 45, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-25 17:40:47', '2023-09-25 17:40:47', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,8 @@ INSERT INTO `movie_category` (`id`, `cat_name`, `cat_image`, `cat_desc`, `create
 (37, 'test', './images/m.jpg', '<p><em><strong>test</strong></em></p>', 1, 1, '2023-09-22 14:56:02', '2023-09-22 14:56:02', 1, 0),
 (42, 'm', './images/m1.jpg', '<p>m</p>', 1, 1, '2023-09-23 16:21:42', '2023-09-23 16:21:42', 1, 0),
 (43, 'mi', 'images/adipurush2023.jpg', '<p>mki</p>', 1, 1, '2023-09-23 16:42:16', '2023-09-24 21:16:10', 1, 0),
-(44, 'Test1', 'images/animal2023.jpg', '<p>mmm</p>', 1, 1, '2023-09-24 22:42:50', '2023-09-24 22:43:45', 1, 0);
+(44, 'Test1', 'images/animal2023.jpg', '<p>mmm</p>', 1, 1, '2023-09-24 22:42:50', '2023-09-24 22:43:45', 1, 0),
+(45, 'action', 'images/animal2023.jpg', '<p><strong>Animal is an upcoming Indian Hindi-language action thriller film edited, written and directed by Sandeep Reddy Vanga and produced by T-Series and Cine1 Studios. The film stars Ranbir Kapoor, Anil Kapoor, Bobby Deol, Rashmika Mandanna and Tripti Dimri</strong></p>', 1, 1, '2023-09-25 17:39:18', '2023-09-25 17:39:45', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `email`, `profile`, `password`, `phone_no`, `created_by`, `updated_by`, `user_type_id`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
-(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-24 23:38:34', 1, 0),
+(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-25 07:10:22', 1, 0),
 (2, 'Kevin Kotadiya', 'kevinkotadiya428@gmail.com', '', '999', '9510935250', NULL, 2, 1, '2023-09-21 22:11:48', '2023-09-22 10:16:24', 1, 0),
 (3, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:04:05', '2023-09-24 22:04:05', 1, 0),
 (4, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:06:02', '2023-09-24 22:06:02', 1, 0),
@@ -178,13 +180,13 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `movie_category`
 --
 ALTER TABLE `movie_category`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -62,8 +62,7 @@ $row = mysqli_fetch_assoc($result);
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder="Edit " name="movie_name" value="<?php echo $row['movie_name']; ?>" />
           </label>
-          <label class="block text-lg ">Category</label>
-
+          <label class="block text-sm mb-2 ">Category</label>
           <select class="form-select form-control" name="movie_category" id="movie_category">
             <option>--- Select Category ---</option>
             <?php
@@ -81,8 +80,8 @@ $row = mysqli_fetch_assoc($result);
               $var_result->free();
             }
             ?>
-
           </select>
+          
           <label class="block text-sm mb-8">
             <span class="text-gray-700 dark:text-gray-400">Movie Image</span>
             <input type="file"
