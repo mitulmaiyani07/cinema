@@ -1,0 +1,1 @@
+<a href="/cinema/logout.php">logout</a>

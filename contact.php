@@ -3,11 +3,9 @@ $title = "Contact";
 require('header.php');
 ?>
 
-<div class="backgro_mh">
-  <div class="container">
-   
-  </div>
-</div>
+
+
+
 <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -15,7 +13,7 @@ require('header.php');
             <div class="row">
               <div class="col-md-12">
                 <div class="titlepage">
-                  <h2>Register</h2>
+                  <h2>Contact us</h2>
                 </div>
                 <div class="col-md-12">
                   <input class="contactus" placeholder="Your Name" type="text" name="Your Name">
@@ -36,6 +34,9 @@ require('header.php');
             </div>
             </form>
 
+            </div>
+          </div>
+</div>
 
 
 <?php require('footer.php'); ?>

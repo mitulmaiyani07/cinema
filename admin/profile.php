@@ -8,13 +8,13 @@ if (isset($_POST['update_profile'])) {
   $email = $_POST['email'];
   $phone_no = $_POST['phone_no'];
 
-  if (isset($_FILES["profileimage"]) && $_FILES["profileimage"]["name"] != "") {
+  if (isset($_FILES["profile"]) && $_FILES["profile"]["name"] != "") {
 
-    $filename = $_FILES["profileimage"]["name"];
+    $filename = $_FILES["profile"]["name"];
 
-    $tempname = $_FILES["profileimage"]["tmp_name"];
+    $tempname = $_FILES["profile"]["tmp_name"];
 
-    $profile_path = '/assets/public/profiles/' . $filename;
+    $profile_path = 'public/profiles/' . $filename;
 
     if (move_uploaded_file($tempname, $profile_path)) {
       $update_sql = "update users set user_name='$user_name',email='$email',phone_no='$phone_no', profile='$profile_path',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $_SESSION['id'];
@@ -43,7 +43,7 @@ $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 // var_dump($row);
 ?>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   <main class="h-full pb-16 overflow-y-auto">
     <div class="container px-6 mx-auto grid">
       <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
@@ -80,17 +80,16 @@ $row = mysqli_fetch_assoc($result);
         <label class="block text-sm">
           <span class="text-gray-700 dark:text-gray-400">Profile Image</span>
           <?php if ($row['profile']): ?>
-          <img width="180" height="180" src="/cinema/admin/<?php echo $row['profile']; ?>"
-          class="rounded-circle" alt="
+            <img width="180" height="180" src="/cinema/admin/<?php echo $row['profile']; ?>" class="rounded-circle" alt="
           <?php echo $row['profile']; ?>" />
           <?php else: ?>
-            <img width="180" height="180" src="profiles/Default.jpg"
-            class="rounded-circle" alt="<?php echo $row['user_name']; ?>" />
-            <?php endif; ?>
+            <img width="180" height="180" src="profiles/Default.jpg" class="rounded-circle"
+              alt="<?php echo $row['user_name']; ?>" />
+          <?php endif; ?>
           <input
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
             placeholder="Name " name="profile" type="file" />
-            
+
         </label>
 
         <button type=" submit"

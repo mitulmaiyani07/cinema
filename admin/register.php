@@ -23,7 +23,7 @@ if (isset($_POST['add_create'])) {
     $sql = "insert into users (user_name,email,phone_no,password,user_type_id,created_at,created_by,updated_by,updated_at,is_active,is_deleted) values ('$user_name','$email','$phone_no','$password','$user_type_id',now(),'$last_id','$last_id',now(),true,false)";
     if (mysqli_query($conn, $sql)) {
       $last_id = mysqli_insert_id($conn);
-      $_SESSION['id'] = $last_id;+-
+      $_SESSION['id'] = $last_id;
       header("location:dashboard.php");
     } else {
       $error_msg = "Something went wrong. Please try again..!!";
