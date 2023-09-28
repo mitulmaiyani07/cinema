@@ -11,7 +11,7 @@ if (isset($_POST['update_profile'])) {
   if (isset($_FILES["profile"]) && $_FILES["profile"]["name"] != "") {
 
     $filename = $_FILES["profile"]["name"];
-
+    
     $tempname = $_FILES["profile"]["tmp_name"];
 
     $profile_path = 'public/profiles/' . $filename;
