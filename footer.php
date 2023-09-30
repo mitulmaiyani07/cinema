@@ -14,7 +14,6 @@
                     <ul class="loca">
                       <li>
                         <a href="#"><img src="icon/loc.png" alt="#" /></a>Locations
-                   
                         <li>
                           
                             <a href="#"><img src="icon/call.png" alt="#" /></a>+12586954775 </li>
@@ -35,7 +34,7 @@
                <div class="container">
               <div class="copyright">
                
-                  <p>Copyright 2023 All Right Reserved By <a href="index.php">Free  html Templates</a></p>
+                  <p>Copyright 2023 All Right Reserved By <a href="index.php">Mr.Mitul Maiyani</a></p>
                 </div>
               </div>
             </div>

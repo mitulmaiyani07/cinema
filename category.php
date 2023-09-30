@@ -1,7 +1,7 @@
 <?php
 $title = "Categories";
 require('header.php'); ?>
-<?php $query = "SELECT m.id,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id order by id";
+<?php $query = "SELECT mc.id,mc.cat_image,mc.cat_name,mc.created_at,mc.is_active FROM movie_category as mc";
 if (isset($_POST['add_to_cart'])) {
   $current_user_id = "";
   if (isset($_SESSION['id'])) {
@@ -14,7 +14,7 @@ if (isset($_POST['add_to_cart'])) {
   // $price = $_POST['price'];
   // $total = (int)$price * $qty;
   if ($current_user_id != "") {
-    $sql = "insert into book (user_id,product_id,qty,amount) values ('$current_user_id','$product_id',$qty,$total)";
+    // $sql = "insert into book (user_id,product_id,qty,amount) values ('$current_user_id','$product_id',$qty,$total)";
     if (mysqli_query($conn, $sql)) {
       header("location:booking.php");
     } else {
@@ -44,39 +44,66 @@ if (isset($_POST['add_to_cart'])) {
 </div> -->
 
 <!-- upcoming -->
-<div id="upcoming" class="upcoming">
-  <div class="container-fluid padding_left3">
-    <div class="row display_boxflex">
-      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-        <?php echo $row['cat_name']; ?>
-        <a href="/cinema/category.php?id=<?php echo $row['id']; ?>">
-          <?php
-          if ($row['cat_image'] != ""): ?>
-            <img src="/cinema/admin/<?php echo str_replace("../", "", $row['cat_image']) ?>" alt="Cat image"
-              class="product-image">
-          <?php else: ?>
-            <img src="assets/images/products/elements/product-1.jpg" alt="cat image" class="cat-image">
-          <?php endif; ?>
-        </a>
-        <div class="box_text">
-          <div class="titlepage">
-            <h2>Upcoming Concerts</h2>
-            <form method="post" enctype="multipart/form-data">
-              <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
-              <input type="hidden" name="cat_name" value="<?php echo $row['cat_name']; ?>" />
-              <input type="hidden" name="cat_image" value="<?php echo str_replace("../", "", $row['cat_image']) ?>" />
-
-              <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book</span></button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-
+<main class="main">
+  <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="container">
+      <h1 class="page-title">Categories</h1>
     </div>
   </div>
-</div>
+
+  <div class="page-content mt-8">
+
+    <div class="container">
+      <div class="row">
+        <?php if ($result = $conn->query($query)): ?>
+          <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="col-md-4">
+              <div class="product product-5 text-center">
+                <figure class="product-media">
+                  <!-- <span class="product-label label-top"><?php echo $row['cat_name']; ?></span> -->
+                  <a href="/cinema/category.php?id=<?php echo $row['id']; ?>">
+                    <?php
+                    if ($row['cat_image'] != ""): ?>
+                      <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>"
+                        alt="Product image" class="product-image">
+                    <?php else: ?>
+                      <img src="/admin/category/images/action.jpg" alt="Product image" class="product-image">
+                    <?php endif; ?>
+                  </a>
+                  <div class="movie-action">
+                    <form method="post">
+                      <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
+                      <input type="hidden" name="cat_name" value="<?php echo $row['cat_name']; ?>" />
+                      <input type="hidden" name="cat_image"
+                        value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
+                      
+                      <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book</span></button>
+                    </form>
+                  </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                  <div class="product-cat">
+                    <p>
+                      <?php echo $row['cat_name']; ?>
+                    </p>
+                  </div>
+                  <h3 class="product-title">
+                    <a href="/cinema/category.php?id=<?php echo $row['id']; ?>">
+                      <?php echo $row['cat_name']; ?>
+                    </a>
+                  </h3><!-- End .product-title -->
+                  
+                </div>
+              </div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</main>
+
 <!-- end upcoming -->
 
 
