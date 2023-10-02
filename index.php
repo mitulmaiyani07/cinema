@@ -124,7 +124,7 @@ if (isset($_POST['add_to_cart'])) {
               <div class="product product-5 text-center">
                 <figure class="product-media">
                   <!-- <span class="product-label label-top"><?php echo $row['cat_name']; ?></span> -->
-                  <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
+                  <a href="/cinema/category.php?category_id=<?php echo $row['id']; ?>">
                     <?php
                     if ($row['cat_image'] != ""): ?>
                       <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>"
@@ -152,7 +152,7 @@ if (isset($_POST['add_to_cart'])) {
                     </p>
                   </div>
                   <h3 class="product-title">
-                    <a href="/cinema/movies.php?id=<?php echo $row['id']; ?>">
+                    <a href="/cinema/category.php?category_id=<?php echo $row['id']; ?>">
                       <?php echo $row['cat_name']; ?>
                     </a>
                   </h3><!-- End .product-title -->

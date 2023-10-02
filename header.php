@@ -37,9 +37,76 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     media="screen">
-  <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  <style type="text/css">
+    .movie-content {
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .movie-media {
+      margin: 0
+    }
+
+    .movie-media img {
+      width: 100%;
+      text-align: center;
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .btn {
+      background-color: #960202 !important;
+      color: #fff;
+      border-color: transparent !important;
+    }
+
+    a:hover, .copyright a:hover{ color: #960202; }
+
+    .btn span {
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background-color: #E15A5D !important;
+    }
+
+    .about.movie-details {
+      background: none;
+    }
+
+    .about.movie-details .about-box figure img {
+      width: 100%;
+      border-radius: 100%;
+      height: 400px;
+      max-width: 400px;
+    }
+
+    .about.movie-details .about-box h2 {
+      font-size: 48px;
+    }
+
+    .about.movie-details .about-box figure {
+      text-align: center;
+    }
+
+    .movie {
+      border: 1px solid #eee;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+
+    .page-title {
+      font-weight: 700;
+      font-size: 48px;
+      color: #960202;
+    }
+
+    .footer-logo{ max-width: 200px; margin:auto }
+  </style>
 </head>
 
 <body class="main-layout<?php echo basename($_SERVER["PHP_SELF"]) == "index.php" ? "" : " contineer_page" ?>">
@@ -54,7 +121,7 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
               <div class="full">
                 <div class="center-desk">
                   <div class="logo">
-                    <a href="index.php"><img src="images/cinemalogo.png" alt="#" /></a>
+                    <a href="/cinema/"><img src="images/white-logo.png" alt="Cinema" /></a>
                   </div>
                 </div>
               </div>
@@ -65,12 +132,10 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
                 <div class="limit-box">
                   <nav class="main-menu ">
                     <ul class="menu-area-main">
-                      <li class="active"> <a href="index.php">Home</a> </li>
-                      <li> <a href="Movies.php">Movies</a> </li>
-                      <li> <a href="category.php">Category </a> </li>
-                      <li> <a href="about.php">About</a> </li>
-                      <li> <a href="contact.php">Contact</a> </li>
-
+                      <li> <a href="index.php">Home</a> </li>
+                      <li> <a href="/cinema/movies.php">Movies</a> </li>
+                      <li> <a href="/cinema/about.php">About</a> </li>
+                      <li> <a href="/cinema/contact.php">Contact</a> </li>
                       <li class="nav-item">
                         <?php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
                           <a href="/cinema/account.php" class="nav-link">Account</a>
@@ -78,11 +143,8 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
                           <a href="/cinema/login.php" class="nav-link">Login</a>
                         <?php } ?>
                       </li>
-                      <li> <a class="last_manu" href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
-
                     </ul>
                   </nav>
-
                 </div>
               </div>
             </div>

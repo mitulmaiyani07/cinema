@@ -12,11 +12,9 @@ if (isset($_POST['login'])) {
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
   if ($row) {
-    // var_dump($row);
     $_SESSION['id'] = $row['id'];
     $_SESSION['user_type_id'] = $row['user_type_id'];
     header("location:index.php");
-    // echo $sql;
   } else {
     $error_msg = "Email or password is incorrect!";
   }
@@ -39,11 +37,10 @@ if (isset($_POST['login'])) {
 
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <button type="submit" class="submit" name="login">Login</button>
+              <button type="submit" class="w-100 btn" name="login">Login</button>
             </div>
-            <div class="col-md-12">
-              <br>
-              <p class="small mb-0 text-center">Don't have account?<a href="register.php">Register</a></p>
+            <div class="col-md-12 py-4">
+              <p class="small mb-0 text-center">Don't have account? <a href="register.php">Register</a></p>
             </div>
           </div>
         </div>

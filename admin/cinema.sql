@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2023 at 12:59 PM
+-- Generation Time: Oct 02, 2023 at 07:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -148,12 +148,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `email`, `profile`, `password`, `phone_no`, `created_by`, `updated_by`, `user_type_id`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
-(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', 'public/profiles/m.jpg', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-28 22:23:08', 1, 0),
+(1, 'Mitul Maiyani', 'mitpatel0720@gmail.com', 'public/profiles/Default.jpg', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-09-30 21:12:08', 1, 0),
 (2, 'Kevin Kotadiya', 'kevinkotadiya428@gmail.com', '', '999', '9510935250', NULL, 2, 1, '2023-09-21 22:11:48', '2023-09-22 10:16:24', 1, 0),
 (3, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:04:05', '2023-09-24 22:04:05', 1, 0),
 (4, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:06:02', '2023-09-24 22:06:02', 1, 0),
 (5, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:10:31', '2023-09-24 22:10:31', 1, 0),
-(6, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:12:00', '2023-09-24 22:12:00', 1, 0);
+(6, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:12:00', '2023-09-24 22:12:00', 1, 0),
+(7, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', '9409', '9409002090', 0, 0, 3, '2023-09-30 21:16:51', '2023-09-30 21:16:51', 1, 0),
+(8, 'test', 'test@gmail.com', '', '12', '95747545859', 0, 0, 3, '2023-09-30 21:21:20', '2023-09-30 21:21:20', 1, 0),
+(9, 'test', 'test@gmail.com', 'public/profiles/Default.jpg', '34', '85843694349', 0, 9, 2, '2023-09-30 22:13:50', '2023-09-30 22:14:06', 1, 0),
+(10, 'test', 'test@gmail.com', '', '23', '595854595', 0, 0, 3, '2023-09-30 22:14:52', '2023-09-30 22:14:52', 1, 0),
+(11, 'test', 'test@gmail.com', '', '999', '9999566', 11, 11, 3, '2023-09-30 22:19:25', '2023-09-30 22:19:25', 1, 0),
+(12, 'test', 'test@gmail.com', '', '11', '9409002090', 12, 12, 3, '2023-09-30 22:28:43', '2023-09-30 22:28:43', 1, 0),
+(13, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:30:09', '2023-09-30 22:30:09', 1, 0),
+(14, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:30:41', '2023-09-30 22:30:41', 1, 0),
+(15, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:32:18', '2023-09-30 22:32:18', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -231,7 +240,7 @@ ALTER TABLE `movie_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_type`

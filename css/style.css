@@ -991,8 +991,8 @@ nav.main-menu {
 
 .menu-area-main li.active a {
     color: #fff;
-    background: #0ed1f0;
-    border-radius: 17px;
+    background: #960202;
+    border-radius: 5px;
 }
 
 .main-menu {
@@ -1010,21 +1010,21 @@ nav.main-menu {
 }
 
 .main-menu ul>li a {
-    padding: 11px 20px;
+    padding: 5px 25px;
     text-align: center;
-    line-height: 20px;
-    font-size: 16px;
+    line-height: 16px;
+    font-size: 14px;
     display: block;
     font-weight: 500;
     color: #fff;
-    text-transform: uppercase;
+    text-transform: capitalize;
     transition: all 0.3s ease-in;
 }
 
 .main-menu ul>li a:hover {
     color: #fff;
-    background: #0ed1f0;
-    border-radius: 17px;
+    background: #960202;
+    border-radius: 5px;
     transition: all 0.3s ease-in;
 }
 
@@ -1225,7 +1225,7 @@ nav.main-menu {
 }
 
 .text-bg a:hover {
-    background-color: #0ed1f0;
+    background-color: #960202;
     color: #fff;
     transition: ease all 0.5s;
 }
@@ -1392,8 +1392,8 @@ nav.main-menu {
 
 
 .about .about-box a:hover {
-    background-color: #0ed1f0;
-    border: #0ed1f0 solid 1px;
+    background-color: #960202;
+    border: #960202 solid 1px;
     color: #fff;
 }
 
@@ -1451,8 +1451,8 @@ nav.main-menu {
 }
 
 .box_text a:hover {
-    background-color: #0ed1f0;
-    border: #0ed1f0 solid 1px;
+    background-color: #960202;
+    border: #960202 solid 1px;
     color: #fff;
 }
 
@@ -1528,7 +1528,7 @@ nav.main-menu {
 
 .hover_box {
 
-    background: #0ed1f0bf;
+    background: #960202bf;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -1549,8 +1549,8 @@ nav.main-menu {
 }
 
 .Gallery_text a:hover {
-    background-color: #0ed1f0;
-    border: #0ed1f0 solid 1px;
+    background-color: #960202;
+    border: #960202 solid 1px;
     color: #fff;
 }
 
@@ -1623,13 +1623,14 @@ ul.icon_hu li {
 }
 
 .contact_bg .contactus {
-    border: #b1b0b0 solid 1px;
+    border: #eee solid 1px;
     padding: 12px 19px;
     margin-bottom: 15px;
     border-radius: inherit;
     color: #000;
     width: 100%;
     height: 44px;
+    border-radius: 5px;
 }
 
 .contact_bg .textarea {
@@ -1637,8 +1638,8 @@ ul.icon_hu li {
     padding: 15px 19px;
     color: #000 !important;
     width: 100%;
-    border: #b1b0b0 solid 1px;
-    border-radius: inherit;
+    border: #eee solid 1px;
+    border-radius: 5px;
 }
 
 .contact_bg .send {
@@ -1716,8 +1717,8 @@ ul.icon_hu li {
 .submit {
 
     height: 52px;
-    border: #0ed1f0 solid 1px;
-    background: #0ed1f0;
+    border: #960202 solid 1px;
+    background: #960202;
     color: #fff;
     margin-left: -5px;
     font-weight: 500;
@@ -1818,13 +1819,13 @@ ul.social_link li a:hover {
 
 
 .contineer_page .header {
-    background: #656565;
+    background: #161616;
     padding-bottom: 27px;
     position: inherit;
 }
 
 .backgro_mh {
-    background: #0ed1f0;
+    background: #960202;
 }
 
 .heding h2 {
