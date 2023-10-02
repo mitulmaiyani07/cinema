@@ -34,102 +34,84 @@ if (isset($_POST['add_to_cart'])) {
 }
 ?>
 
-<!-- <section class="slider_section">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-
-      <div class="container">
-        <div class="carousel-caption">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="text-bg">
-                <span>The Best</span>
-                <h1>MUSIC BAND EVER</h1>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                  when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                  distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
+<section class="">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active slider_section" style="background-image:url('images/p1.jpg')" data-bs-interval="500">
+        <div class="container">
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-bg">
+                  <a href="/cinema/movies.php">View All</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item slider_section" style="background-image:url('images/p2.jpg')" data-bs-interval="500">
+        <div class="container ">
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-bg">
+                  <a href="/cinema/movies.php">View All</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item slider_section" style="background-image:url('images/p3.jpg')" data-bs-interval="500">
+        <div class="container">
+          <div class="carousel-caption ">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-bg">
+                  <a href="/cinema/movies.php">View All</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="carousel-item">
-
-      <div class="container ">
-        <div class="carousel-caption">
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="text-bg">
-                <span>The Best</span>
-                <h1>MUSIC BAND EVER</h1>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                  when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                  distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                <a href="#">Music & Entertainment</a><a href="#">Buy Tickets </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="carousel-item">
-
-      <div class="container">
-        <div class="carousel-caption ">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="text-bg">
-                <span>The Best</span>
-                <h1>MUSIC BAND EVER</h1>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                  when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                  distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
+    <div class="carousel-arrow">
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+      </a>
     </div>
   </div>
-</div>
-</section> -->
-<main class="main">
+</section>
+<main class="main d-none">
   <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
     <div class="container">
       <h1 class="page-title">Category</h1>
     </div>
   </div>
-
   <div class="page-content mt-8">
-
     <div class="container">
       <div class="row">
-        <?php if ($result = $conn->query($query)): ?>
-          <?php while ($row = $result->fetch_assoc()): ?>
+        <?php if ($result = $conn->query($query)) : ?>
+          <?php while ($row = $result->fetch_assoc()) : ?>
             <div class="col-md-4">
               <div class="product product-5 text-center">
                 <figure class="product-media">
                   <!-- <span class="product-label label-top"><?php echo $row['cat_name']; ?></span> -->
                   <a href="/cinema/category.php?category_id=<?php echo $row['id']; ?>">
                     <?php
-                    if ($row['cat_image'] != ""): ?>
-                      <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>"
-                        alt="Product image" class="product-image">
-                    <?php else: ?>
+                    if ($row['cat_image'] != "") : ?>
+                      <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>" alt="Product image" class="product-image">
+                    <?php else : ?>
                       <img src="/admin/category/images/action.jpg" alt="Product image" class="product-image">
                     <?php endif; ?>
                   </a>
@@ -137,9 +119,8 @@ if (isset($_POST['add_to_cart'])) {
                     <form method="post">
                       <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                       <input type="hidden" name="cat_name" value="<?php echo $row['cat_name']; ?>" />
-                      <input type="hidden" name="cat_image"
-                        value="<?php echo str_replace("../", "", $row['cat_image']) ?>" />
-                      
+                      <input type="hidden" name="cat_image" value="<?php echo str_replace("../", "", $row['cat_image']) ?>" />
+
                       <!-- <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book</span></button> -->
                     </form>
                   </div><!-- End .product-action -->
@@ -156,7 +137,7 @@ if (isset($_POST['add_to_cart'])) {
                       <?php echo $row['cat_name']; ?>
                     </a>
                   </h3><!-- End .product-title -->
-                  
+
                 </div>
               </div>
             </div>
@@ -166,11 +147,5 @@ if (isset($_POST['add_to_cart'])) {
     </div>
   </div>
 </main>
-<!-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> -->
-  <!-- <i class="fa fa-long-arrow-left" aria-hidden="true"></i> -->
-<!-- </a> -->
-<!-- <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> -->
-  <!-- <i class="fa fa-long-arrow-right" aria-hidden="true"></i> -->
-<!-- </a> -->
 
 <?php require('footer.php'); ?>
