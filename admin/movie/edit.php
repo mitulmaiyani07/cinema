@@ -63,7 +63,7 @@ $row = mysqli_fetch_assoc($result);
               placeholder="Edit " name="movie_name" value="<?php echo $row['movie_name']; ?>" />
           </label>
           <label class="block text-sm mb-2 ">Category</label>
-          <select class="form-select form-control" name="movie_category" id="movie_category">
+          <select class="form-select form-control" name="movie_category" >
             <option>--- Select Category ---</option>
             <?php
             $query = "SELECT *  from movie_category";

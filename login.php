@@ -1,8 +1,9 @@
 <?php
-require('header.php');
-
-
+if (session_id() === "") session_start();
 $error_msg = "";
+
+require('config.php');
+
 if (isset($_POST['login'])) {
   $email = $_POST['email'];
 
@@ -19,6 +20,8 @@ if (isset($_POST['login'])) {
     $error_msg = "Email or password is incorrect!";
   }
 }
+require('header.php');
+
 ?>
 <div class="container my-3">
   <div class="row">
@@ -40,12 +43,11 @@ if (isset($_POST['login'])) {
               <button type="submit" class="w-100 btn" name="login">Login</button>
             </div>
             <div class="col-md-12 py-4">
-              <p class="small mb-0 text-center">Don't have account? <a href="register.php">Register</a></p>
+              <p class="mt-1">Don't have account? <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="register.php">Register</a></p>
             </div>
           </div>
         </div>
       </form>
-
     </div>
   </div>
 </div>

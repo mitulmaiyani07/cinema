@@ -50,7 +50,7 @@ $cat_data = $cat_result->fetch_assoc();
                       <input type="hidden" name="movie_name" value="<?php echo $row['movie_name']; ?>" />
                       <input type="hidden" name="movie_image"
                         value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
-                      <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book
+                      <button type="submit" name="book" class="btn btn-movies btn-book"><span>Book
                           Now</span></button>
                     </form>
                   </div>

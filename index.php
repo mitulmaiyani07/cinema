@@ -110,9 +110,9 @@ if (isset($_POST['add_to_cart'])) {
                   <a href="/cinema/category.php?category_id=<?php echo $row['id']; ?>">
                     <?php
                     if ($row['cat_image'] != "") : ?>
-                      <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>" alt="Product image" class="product-image">
+                      <img src="/cinema/admin/category/<?php echo str_replace("../", "", $row['cat_image']) ?>" alt="movie image" class="movie-image">
                     <?php else : ?>
-                      <img src="/admin/category/images/action.jpg" alt="Product image" class="product-image">
+                      <img src="/admin/category/images/action.jpg" alt="movie image" class="movie-image">
                     <?php endif; ?>
                   </a>
                   <div class="movie-action">
@@ -123,20 +123,20 @@ if (isset($_POST['add_to_cart'])) {
 
                       <!-- <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book</span></button> -->
                     </form>
-                  </div><!-- End .product-action -->
-                </figure><!-- End .product-media -->
+                  </div>
+                </figure>
 
-                <div class="product-body">
-                  <div class="product-cat">
+                <div class="movie-body">
+                  <div class="movie-cat">
                     <p>
                       <?php echo $row['cat_name']; ?>
                     </p>
                   </div>
-                  <h3 class="product-title">
+                  <h3 class="movie-title">
                     <a href="/cinema/category.php?category_id=<?php echo $row['id']; ?>">
                       <?php echo $row['cat_name']; ?>
                     </a>
-                  </h3><!-- End .product-title -->
+                  </h3>
 
                 </div>
               </div>

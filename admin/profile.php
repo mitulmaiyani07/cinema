@@ -83,7 +83,7 @@ $row = mysqli_fetch_assoc($result);
             <img width="180" height="180" src="/cinema/admin/<?php echo $row['profile']; ?>" class="rounded-circle" alt="
           <?php echo $row['profile']; ?>" />
           <?php else: ?>
-            <img width="180" height="180" src="profiles/Default.jpg" class="rounded-circle"
+            <img width="180" height="180" src="/cinema/admin/public/profiles/Default.jpg" class="rounded-circle"
               alt="<?php echo $row['user_name']; ?>" />
           <?php endif; ?>
           <input

@@ -259,7 +259,7 @@ $row = mysqli_fetch_assoc($result);
                     <img src="/cinema/admin/<?php echo $row['profile']; ?>" width="35" height="35" class="rounded-circle"
                       data-bs-toggle="tooltip" class="mb-0 fs-3" title=<?php echo ucwords($row['type_name']); ?>>
                   <?php else: ?>
-                    <img src="/cinema/admin/profiles/Default.jpg" alt="" width="35" height="35" class="rounded-circle">
+                    <img src="/cinema/admin/public/profiles/Default.jpg" alt="" width="35" height="35" class="rounded-circle">
                   <?php endif; ?>
                 </button>
                 <template x-if="isProfileMenuOpen">

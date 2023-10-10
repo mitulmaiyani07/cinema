@@ -1,9 +1,9 @@
 <?php
 $title = "Movies";
-require('header.php');
+
 ?>
 <?php $query = "SELECT m.id,m.category_id,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id order by id";
-if (isset($_POST['add_to_cart'])) {
+if (isset($_POST['book'])) {
   $current_user_id = "";
   if (isset($_SESSION['id'])) {
     $current_user_id = $_SESSION['id'];
@@ -15,7 +15,7 @@ if (isset($_POST['add_to_cart'])) {
   // $price = $_POST['price'];
   // $total = (int) $price * $qty;
   if ($current_user_id != "") {
-    // $sql = "insert into cart (user_id,product_id,qty,amount) values ('$current_user_id','$product_id',$qty,$total)";
+    // $sql = "insert into cart (user_id,movie_id,qty,amount) values ('$current_user_id','$movie_id',$qty,$total)";
     if (mysqli_query($conn, $sql)) {
       header("location:cart.php");
     } else {
@@ -26,12 +26,13 @@ if (isset($_POST['add_to_cart'])) {
       'movie_id' => $movie_id,
       'movie_name' => $movie_name,
       // 'price' => $price,
-      // 'product_image' => $product_image,
+      // 'movie_image' => $movie_image,
       // 'qty' => $qty,
       // 'total_amount' => $total,
     );
   }
 }
+require('header.php');
 ?>
 <main class="main py-5">
   <div class="page-content movie-list">
@@ -45,33 +46,32 @@ if (isset($_POST['add_to_cart'])) {
                   <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
                     <?php if ($row['movie_image'] != ""): ?>
                       <img src="/cinema/admin/movie/<?php echo str_replace("../", "", $row['movie_image']) ?>"
-                        alt="Product image" class="product-image">
+                        alt="movie image" class="movie-image">
                     <?php else: ?>
-                      <img src="/admin/movie/images/bollywood1.jpg" alt="Product image" class="product-image">
+                      <img src="/admin/movie/images/bollywood1.jpg" alt="movie image" class="movie-image">
                     <?php endif; ?>
                   </a>
                 </figure>
                 <div class="movie-content py-4">
-                  <div class="product-cat">
+                  <div class="movie-cat">
                     <a href="/cinema/category.php?category_id=<?php echo $row['category_id']; ?>">
                       <?php echo $row['cat_name']; ?>
                     </a>
                   </div>
-                  <h3 class="product-title">
+                  <h3 class="movie-title">
                     <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
                       <?php echo $row['movie_name']; ?>
                     </a>
-                  </h3><!-- End .product-title -->
+                  </h3><!-- End .movie-title -->
                   <div class="movie-action">
                     <form method="post">
                       <input type="hidden" name="movie_id" value="<?php echo $row['id']; ?>" />
                       <input type="hidden" name="movie_name" value="<?php echo $row['movie_name']; ?>" />
                       <input type="hidden" name="movie_image"
                         value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
-                      <button type="submit" name="add_to_cart" class="btn btn-product btn-cart"><span>Book
-                          Now</span></button>
+                        <a class="btn" href="booking.php">Book Now</a>
                     </form>
-                  </div><!-- End .product-action -->
+                  </div><!-- End .movie-action -->
                 </div>
               </div>
             </div>

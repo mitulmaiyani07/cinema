@@ -22,7 +22,7 @@ require('header.php');
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Total clients
+            Users
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
             6389
@@ -40,7 +40,7 @@ require('header.php');
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Account balance
+            Categories
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
             $ 46,760.89
@@ -58,7 +58,7 @@ require('header.php');
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            New sales
+            Movies
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
             376
@@ -76,7 +76,7 @@ require('header.php');
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Pending contacts
+           Theatres
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
             35

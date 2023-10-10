@@ -20,10 +20,10 @@
                     <a href="#"><img src="icon/loc.png" alt="#" /></a>Locations
                   <li>
 
-                    <a href="#"><img src="icon/call.png" alt="#" /></a>+12586954775
+                    <a href="#"><img src="icon/call.png" alt="#" /></a>+91 9409002090
                   </li>
                   <li>
-                    <a href="#"><img src="icon/email.png" alt="#" /></a>demo@gmail.com
+                    <a href="#"><img src="icon/email.png" alt="#" /></a>mitpatel0720@gmail.com
                   </li>
                 </ul>
 

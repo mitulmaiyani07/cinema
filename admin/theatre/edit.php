@@ -32,7 +32,7 @@ if (isset($_POST['edit_type'])) {
   } else {
     $update_sql = "update theatre set theatre_name='$theatre_name',theatre_desc='$theatre_desc',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $id;
     if (mysqli_query($conn, $update_sql)) {
-      $message .= "<div class='alert alert-success col-sm-11'>theatreegory updated successfully..</div>";
+      $message .= "<div class='alert alert-success col-sm-11'>theatre updated successfully..</div>";
     } else {
       $message .= "<div class='alert alert-danger col-sm-11'>Something went wrong. Please Check..!</div>";
     }
@@ -66,7 +66,7 @@ $row = mysqli_fetch_assoc($result);
           <span class="text-gray-700 dark:text-gray-400">theatre Image</span>
           <input type="file"
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-            placeholder=" theatreegory Image" name="theatre_image" value="<?php echo $row['theatre_image']; ?>" /><?php if($row['theatre_image']) : ?>
+            placeholder=" theatre Image" name="theatre_image" value="<?php echo $row['theatre_image']; ?>" /><?php if($row['theatre_image']) : ?>
                <img src="<?php echo $row['theatre_image']; ?>" style="max-width:200px" />
                <?php endif; ?>
         </label>

@@ -1,6 +1,5 @@
 <?php
-if (session_id() === "")
-  session_start();
+ if (session_id() === "") session_start();
 require('config.php');
 if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
   $sql = "SELECT * from users where id = " . $_SESSION['id'];
@@ -35,7 +34,8 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
   <!-- Tweaks for older IEs-->
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+    media="screen">
   <style type="text/css">
     .movie-content {
       text-align: center;
@@ -118,8 +118,19 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
       min-height: 650px;
       background-position: top center;
     }
-    .carousel-control-next, .carousel-control-prev{ bottom: 5%;}
-    .carousel-control-next i, .carousel-control-prev i{ width: 30px; height: 30px; background-color: transparent; color: #fff; }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+      bottom: 5%;
+    }
+
+    .carousel-control-next i,
+    .carousel-control-prev i {
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -127,7 +138,7 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
 
 <body class="main-layout contineer_page">
   <header>
-    <?php if (basename($_SERVER["PHP_SELF"]) == "index.php") : ?>
+    <?php if (basename($_SERVER["PHP_SELF"]) == "index.php"): ?>
       <!-- <div class="header-top"> -->
     <?php endif; ?>
     <div class="header">
@@ -167,7 +178,7 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
         </div>
       </div>
     </div>
-    <?php if (basename($_SERVER["PHP_SELF"]) == "index.php") : ?>
+    <?php if (basename($_SERVER["PHP_SELF"]) == "index.php"): ?>
       <!-- </div> -->
     <?php endif; ?>
   </header>
