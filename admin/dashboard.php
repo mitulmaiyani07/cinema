@@ -1,17 +1,37 @@
 <?php
 $title = "Dashboard";
-require('header.php');
+require('header.php') ?>
+<?php
+$total_user_sql = "SELECT COUNT(id)
+ as totalUsers FROM `users` where user_type_id='3'";
+$result = $conn->query($total_user_sql);
+$urow = mysqli_fetch_assoc($result);
+
+$total_cat_sql = "SELECT COUNT(id)
+ as totalCategories FROM `movie_category`";
+$result = $conn->query($total_cat_sql);
+$crow = mysqli_fetch_assoc($result);
+
+$total_movie_sql = "SELECT COUNT(id)
+ as totalMovies FROM `movie`";
+$result = $conn->query($total_movie_sql);
+$mrow = mysqli_fetch_assoc($result);
+
+$total_theatre_sql = "SELECT COUNT(id)
+ as totalTheatres FROM `theatre`";
+$result = $conn->query($total_theatre_sql);
+$trow = mysqli_fetch_assoc($result);
+
 ?>
+
 <main class="h-full overflow-y-auto">
   <div class="container px-6 mx-auto grid">
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
       Dashboard
     </h2>
-    <!-- CTA -->
     
-    <!-- Cards -->
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-      <!-- Card -->
+     
       <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -22,10 +42,10 @@ require('header.php');
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Users
+            Customers
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            6389
+          <?php echo $urow['totalUsers']; ?>
           </p>
         </div>
       </div>
@@ -43,7 +63,7 @@ require('header.php');
             Categories
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            $ 46,760.89
+          <?php echo $crow['totalCategories']; ?>
           </p>
         </div>
       </div>
@@ -61,7 +81,7 @@ require('header.php');
             Movies
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            376
+          <?php echo $mrow['totalMovies']; ?>
           </p>
         </div>
       </div>
@@ -79,16 +99,12 @@ require('header.php');
            Theatres
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            35
+          <?php echo $trow['totalTheatres']; ?> 
           </p>
         </div>
       </div>
     </div>
 
-   
-         
-        
-       
   </div>
 </main>
 

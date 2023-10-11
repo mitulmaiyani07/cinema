@@ -39,31 +39,23 @@ if (isset($_POST['add_to_cart'])) {
 <div class="container mt-3">
 
     <div class="row">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-8 mt-5">
             <form class="contact_bg" method="post">
                 <div class="row card">
                     <h1 class="mt-5 text-center">Booking</h1>
                     <div class="col-md-12">
-                        <label class="text-start m-0">Movie Name</label>
-                        <select class="select form-control" name="movie">
-                            <option>--- Select Movies ---</option>
-                            <?php
-                            $query = "SELECT * from movie";
-                            if ($var_result = $conn->query($query)) {
-                                $i = 0;
-                                while ($var_row = $var_result->fetch_assoc()) {
-                                    ?>
-                                    <option value="<?php echo $var_row['id']; ?>">
-                                        <?php echo $var_row['movie_name']; ?>
-                                    </option>
-                                    <?php
-                                    $i++;
-                                }
-                                $var_result->free();
-                            }
-                            ?>
-                        </select>
+                        <label class="m-0">Full Name</label>
+                        <input class="contactus" type="user_name" name="user_no" required>
                     </div>
+                    <div class="col-md-12">
+                        <label class="m-0">Email</label>
+                        <input class="contactus" type="email" name="email" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="m-0">Phone no</label>
+                        <input class="contactus" type="phone_no" name="phone_no" required>
+                    </div>
+                    
                     <div class="col-md-12">
                         <label class="text-start m-0">theatre Name</label>
                         <select class="select form-control" name="theatre">
@@ -85,41 +77,20 @@ if (isset($_POST['add_to_cart'])) {
                             ?>
                         </select>
                     </div>
-                    <div class="row m-0">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="m-0">Date</label>
-                            <input class="contactus" type="date" name="date" required>
+                            <input class="contactus" type="datetime-local" name="date_time" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="m-0">Time</label>
-                            <input class="contactus" type="time" name="time" required>
-                        </div>
-                    </div>
                     <div class="col-md-12">
                         <label class="m-0">Number of tickets</label>
-                        <input class="contactus" type="number" name="ticket_number" required>
+                        <input class="contactus" type="number" name="tickets" required>
                     </div>
                     <!-- <div class="col-md-12">
                         <label class="m-0">Price</label>
                         <input class="contactus" type="100" name="total_amount" required>
                     </div> -->
-                    <div class="col-md-12">
-                        <label class="m-0">Email</label>
-                        <input class="contactus" type="email" name="email" required>
-                    </div>
-                    <div>
-                        <label class="d-flex justify-content-center">Reservation name:</label>
-                        <div class="row m-0">
-                            <div class="col-md-6">
-                                <label class="m-0">First Name</label>
-                                <input type="text" class="contactus" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="m-0">Last Name</label>
-                                <input type="text" class="contactus" required>
-                            </div>
-                        </div>
-                    </div>
+                   
+                  
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 p-3 text-center">
                         <button type="submit" class="submit" name="book">book</button>
                     </div>

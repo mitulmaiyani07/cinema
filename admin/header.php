@@ -19,6 +19,7 @@ $row = mysqli_fetch_assoc($result);
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/cinema/admin/assets/css/tailwind.output.css" />
+  <link rel="icon" href="/cinema/images/logo.png" type="image" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="/cinema/admin/assets/js/init-alpine.js"></script>
   <script

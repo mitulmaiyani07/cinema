@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- fevicon -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <link rel="icon" href="/cinema/images/logo.png" type="image" />
   <!-- bootstrap css -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- style css -->
