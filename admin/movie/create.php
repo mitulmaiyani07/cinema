@@ -25,13 +25,14 @@ if (isset($_POST['add_type'])) {
     }
     $movie_name = $_POST['movie_name'];
     $movie_desc = mysqli_real_escape_string($conn,$_POST['movie_desc']);
+    $price = $_POST['price'];
     $category_id=$_POST['movie_category'];
     $current_user_id = $_SESSION['id'];
 
     if ($is_uploaded == true) {
-        $sql = "insert into movie (movie_name,movie_image,movie_desc,category_id,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$folder','$movie_desc','$category_id',$current_user_id,$current_user_id,true,false,now(),now())";
+        $sql = "insert into movie (movie_name,movie_image,movie_desc,price,category_id,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$folder','$movie_desc','$price','$category_id',$current_user_id,$current_user_id,true,false,now(),now())";
     } else {
-        $sql = "insert into movie (movie_name,movie_desc,category_id,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$movie_desc','$category_id',$current_user_id,$current_user_id,true,false,now(),now())";
+        $sql = "insert into movie (movie_name,movie_desc,price,category_id,created_by,updated_by,is_active,is_deleted,created_at,updated_at) values('$movie_name','$movie_desc',$price','$category_id',$current_user_id,$current_user_id,true,false,now(),now())";
     }
 
     if (mysqli_query($conn, $sql)) {
@@ -57,7 +58,13 @@ if (isset($_POST['add_type'])) {
                     <input type="text"
                         class="bloc k w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="Add " name="movie_name" />
-                </label>    
+                </label>  
+                <label class="block text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Price</span>
+                    <input type="text"
+                        class="bloc k w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        placeholder="Movie Price " name="price" />
+                </label>  
                 <label class="block text-lg ">Category</label>
                     
                     <select class="form-select form-control" name="movie_category" id="movie_category">

@@ -19,6 +19,7 @@ require('../header.php');
                             <th class="px-4 py-3">#</th>
                             <th class="px-4 py-3">Image</th>
                             <th class="px-4 py-3">Movie_Name</th>
+                            <th class="px-4 py-3">Price</th>
                             <th class="px-4 py-3">Created_at</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
@@ -26,7 +27,7 @@ require('../header.php');
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                        
                         <?php
-                           $query = "SELECT id,Movie_name,Movie_image,created_at from movie ORDER BY id DESC";
+                           $query = "SELECT id,Movie_name,Movie_image,Price,created_at from movie ORDER BY id DESC";
 
                            if ($result = $conn->query($query)) {
                               $i = 0;
@@ -48,6 +49,7 @@ require('../header.php');
                                        ?>
                                     </td>
                                     <td><?php echo $row['Movie_name']; ?></td>
+                                    <td><?php echo $row['Price']; ?></td>
                                     <td><?php echo date('d-M-Y h:i
                                     A', strtotime($row['created_at'])); ?></td>
                                     <td class="px-4 py-3">

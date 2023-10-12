@@ -7,6 +7,7 @@ if (isset($_GET['id'])) {
   if (isset($_POST['edit_type'])) {
     $movie_name = $_POST['movie_name'];
     $movie_desc = mysqli_real_escape_string($conn, $_POST['movie_desc']);
+    $price = $_POST['price'];
     $category_id = $_POST['movie_category'];
 
     if (isset($_FILES["movie_image"]) && $_FILES["movie_image"]["name"] != "") {
@@ -20,7 +21,7 @@ if (isset($_GET['id'])) {
       /* Check type and size */
 
       if (move_uploaded_file($tempname, $folder)) {
-        $update_sql = "update movie set movie_name='$movie_name',movie_image='$folder',movie_desc='$movie_desc',category_id='$category_id',updated_at=now(),updated_by=" . $_SESSION['id'] . " where id =  " . $id;
+        $update_sql = "update movie set movie_name='$movie_name',movie_image='$folder',movie_desc='$movie_desc'price='$price',category_id='$category_id',updated_at=now(),updated_by=" . $_SESSION['id'] . " where id =  " . $id;
 
         if (mysqli_query($conn, $update_sql)) {
           $message .= "<div class='alert alert-success col-sm-11'>Category updated successfully..</div>";
@@ -31,7 +32,7 @@ if (isset($_GET['id'])) {
         $message .= '<div class="alert alert-danger col-sm-11">Failed to upload image!</div>';
       }
     } else {
-      $update_sql = "update movie set movie_name='$movie_name',movie_desc='$movie_desc',category_id='$category_id',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $id;
+      $update_sql = "update movie set movie_name='$movie_name',movie_desc='$movie_desc',price='$price',category_id='$category_id',updated_at=now(), updated_by=" . $_SESSION['id'] . " where id =  " . $id;
       // echo $update_sql;  
       if (mysqli_query($conn, $update_sql)) {
         $message .= "<div class='alert alert-success col-sm-11'>Movie Updated Successfully..</div>";
@@ -61,6 +62,12 @@ $row = mysqli_fetch_assoc($result);
             <input
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder="Edit " name="movie_name" value="<?php echo $row['movie_name']; ?>" />
+          </label>
+          <label class="block text-sm mb-8">
+            <span class="text-gray-700 dark:text-gray-400">Price</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="Edit " name="price" value="<?php echo $row['price']; ?>" />
           </label>
           <label class="block text-sm mb-2 ">Category</label>
           <select class="form-select form-control" name="movie_category" >
