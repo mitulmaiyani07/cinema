@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 12, 2023 at 05:37 PM
+-- Host: 127.0.0.1:3307
+-- Generation Time: Oct 12, 2023 at 07:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,8 +35,17 @@ CREATE TABLE `booking` (
   `tickets` int(4) NOT NULL,
   `date_time` datetime NOT NULL,
   `payment_status` varchar(200) NOT NULL,
-  `total_amount` decimal(6,2) NOT NULL
+  `total_amount` decimal(6,2) NOT NULL,
+  `transaction_id` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `movie_id`, `theatre_id`, `user_id`, `tickets`, `date_time`, `payment_status`, `total_amount`, `transaction_id`) VALUES
+(2, 16, 3, 1, 3, '2023-10-15 22:52:00', 'completed', 540.00, '4177d1a2-0564-4ce6-ba0f-07782d14fc29'),
+(4, 17, 6, 1, 3, '2023-10-28 23:13:00', 'completed', 540.00, 'fcaaad19-5201-4397-9fec-a4e5b29eb7c6');
 
 -- --------------------------------------------------------
 
@@ -66,25 +75,25 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`id`, `movie_name`, `movie_image`, `movie_desc`, `price`, `category_id`, `release_date`, `is_released`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
-(1, 'Tu Jhoothi Main Makkaar', './images/tjmm2023.jpg', '<p><strong>Mickey, a carefree businessman and womaniser, helps couples break up. However, things change for him when he falls for Tinni, a witty and beautiful chartered accountant.</strong></p>', '', 8, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 21:04:13', '2023-10-04 23:16:22', 1, 0),
-(2, 'Jawan', './images/jawan2023.jpg', '<p><strong>An emotional journey of a man who is set to rectify the wrongs in the society, in an attempt to get even with his past, driven by a personal vendetta while keeping up to a promise made years ago. A high-octane action thriller where he is up against a dreadful monstrous outlaw who knows no fear and has caused extreme suffering to many. In the journey he will cross paths with a high-minded seasoned lady officer whose emotions might get the better of her as she gets involved in this battle. As his past catches up with him, to overcome the challenges and restore the harmony in their world, he will need all the firepower and intelligence to do so</strong></p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 22:45:06', '2023-09-28 23:20:51', 1, 0),
-(3, 'Animal 2023', './images/animal2023.jpg', '<p><strong>Animal is&nbsp;the story of a son\'s obsessive love for his father. Often away due to work the father is unable to comprehend the intensity of his son\'s love. Ironically, this fervent love and admiration for his father and family creates conflict between the father and son.</strong></p>', '', 4, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-25 17:40:47', '2023-09-28 23:21:32', 1, 0),
-(4, 'Tiger 3', './images/tiger3_2023.jpg', '<p><strong>Tiger (Salman Khan) and Zoya (Katrina Kaif) return to the big screen with action-packed sequences, in this third installment of their spy films that previously gave us Ek Tha Tiger and Tiger Zinda Hai.</strong></p>', '', 6, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 22:47:47', '2023-09-29 23:54:16', 1, 0),
-(5, 'Omg 2', './images/omg2_2023.jpg', '<p><strong>OMG 2 is set in the backdrop of an Indian school where sex education is a taboo topic. Vivek, the protagonist, finds himself in trouble when his actions lead to a scandal that brings the issue of sex education to the forefront. The film explores the consequences Vivek faces and how he comes to terms with his mistakes.</strong></p>', '', 7, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:25:38', '2023-09-29 23:53:57', 1, 0),
-(6, 'Gadar 2', './images/gadar2.jpg', '<p><strong>When Tara Singh goes missing during a skirmish and is believed to be captured in Pakistan, his son Jeete sets out to rescue him and enters a labyrinth from which they both must escape at all costs. Gadar II brings back India\'s most loved family of Tara, Sakeena and Jeete; 22 years after its predecessor.</strong></p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:28:20', '2023-09-29 23:53:37', 1, 0),
-(7, 'Spy', './images/spy.jpg', '<p><strong>After receiving the news of the death of his elder brother Subash, who worked for R&amp;AW, Jay sets out on a mission to find out what happened leading him into a bigger conspiracy of a possible nuclear attack threat to the country.</strong></p>', '', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:33:46', '2023-09-29 23:53:01', 1, 0),
-(8, 'Satyaprem Ki Katha', './images/spkk.jpg', '<p><strong>A middle-class boy in Ahmedabad, Satyaprem falling in one-sided love with Katha, who is coping with her breakup with Tapan. Through the journey, they discover each other\'s life and complement in accomplishing what was left halfway.</strong></p>', '', 7, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:37:28', '2023-09-28 23:37:28', 1, 0),
-(9, 'Pathan', './images/pathan2023.jpg', '<p><strong>Pathaan, an exiled RAW agent, works with ISI agent Rubina Mohsin to take down Jim, a former RAW agent, who plans to attack India with a deadly virus. Produced by Aditya Chopra of Yash Raj Films, the film began principal photography in November 2020 in Mumbai.</strong></p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:39:35', '2023-09-29 23:52:44', 1, 0),
-(10, 'Bawaal', './images/bawaal.jpg', '<p><strong>A small-town man who falls in love with the most beautiful girl in town. He wants to marry her one day because marrying her can raise his social position. Every love story has its own war.</strong></p>', '', 8, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:42:11', '2023-09-29 23:52:21', 1, 0),
-(11, 'IB71', './images/ib71.jpg', '<p><strong>IB71 is a 2023 Indian Hindi-language spy thriller film based on the 1971 Indian Airlines hijacking, written and directed by Sankalp Reddy. It stars Vidyut Jammwal, Vishal Jethwa and Faizan Khan, alongside Anupam Kher, Ashwath Bhatt, Danny Sura and Suvrat Joshi.</strong></p>', '', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:45:13', '2023-09-28 23:45:13', 1, 0),
-(12, 'Gumraah', './images/gumraah.jpg', '<p><strong>It revolves around a murder investigation which becomes complicated after the police discover two lookalike suspects.</strong></p>', '', 4, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:48:25', '2023-09-28 23:48:25', 1, 0),
-(13, 'Bloody Daddy', './images/bloodydaddy.jpg', '<p><strong>A messed up, tenacious man faces off against cops and crime lords to save the one relationship that matters to him. A messed up, tenacious man faces off against cops and crime lords to save the one relationship that matters to him.</strong></p>', '', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:37:51', '2023-09-29 23:37:51', 1, 0),
-(14, 'Dasara', './images/dasara.jpg', '<p><strong>Dasara&nbsp;tells the story of Dharani who is in love with Vennela (Keerthy Suresh). But she and Dharani\'s best friend Suri are in love and as a child, Dharani &ldquo;sacrifises&rdquo; his love. Things take a turn for the worse when a bar and an evil Sarpanch get in the way and the two men turn towards politics.</strong></p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:41:52', '2023-09-29 23:41:52', 1, 0),
-(15, 'Amigos', './images/amigos.jpg', '<p><strong>Three identical men befriend each other through a doppelganger-finding application and things go well until the criminal past of one amongst them emerges.</strong></p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:44:42', '2023-09-29 23:44:42', 1, 0),
+(1, 'Tu Jhoothi Main Makkaar', './images/tjmm2023.jpg', '<p><strong>Mickey, a carefree businessman and womaniser, helps couples break up. However, things change for him when he falls for Tinni, a witty and beautiful chartered accountant.</strong></p>', '200', 8, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 21:04:13', '2023-10-04 23:16:22', 1, 0),
+(2, 'Jawan', './images/jawan2023.jpg', '<p><strong>An emotional journey of a man who is set to rectify the wrongs in the society, in an attempt to get even with his past, driven by a personal vendetta while keeping up to a promise made years ago. A high-octane action thriller where he is up against a dreadful monstrous outlaw who knows no fear and has caused extreme suffering to many. In the journey he will cross paths with a high-minded seasoned lady officer whose emotions might get the better of her as she gets involved in this battle. As his past catches up with him, to overcome the challenges and restore the harmony in their world, he will need all the firepower and intelligence to do so</strong></p>', '250', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-24 22:45:06', '2023-09-28 23:20:51', 1, 0),
+(3, 'Animal 2023', './images/animal2023.jpg', '<p><strong>Animal is&nbsp;the story of a son\'s obsessive love for his father. Often away due to work the father is unable to comprehend the intensity of his son\'s love. Ironically, this fervent love and admiration for his father and family creates conflict between the father and son.</strong></p>', '300', 4, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-25 17:40:47', '2023-09-28 23:21:32', 1, 0),
+(4, 'Tiger 3', './images/tiger3_2023.jpg', '<p><strong>Tiger (Salman Khan) and Zoya (Katrina Kaif) return to the big screen with action-packed sequences, in this third installment of their spy films that previously gave us Ek Tha Tiger and Tiger Zinda Hai.</strong></p>', '270', 6, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 22:47:47', '2023-09-29 23:54:16', 1, 0),
+(5, 'Omg 2', './images/omg2_2023.jpg', '<p><strong>OMG 2 is set in the backdrop of an Indian school where sex education is a taboo topic. Vivek, the protagonist, finds himself in trouble when his actions lead to a scandal that brings the issue of sex education to the forefront. The film explores the consequences Vivek faces and how he comes to terms with his mistakes.</strong></p>', '150', 7, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:25:38', '2023-09-29 23:53:57', 1, 0),
+(6, 'Gadar 2', './images/gadar2.jpg', '<p><strong>When Tara Singh goes missing during a skirmish and is believed to be captured in Pakistan, his son Jeete sets out to rescue him and enters a labyrinth from which they both must escape at all costs. Gadar II brings back India\'s most loved family of Tara, Sakeena and Jeete; 22 years after its predecessor.</strong></p>', '100', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:28:20', '2023-09-29 23:53:37', 1, 0),
+(7, 'Spy', './images/spy.jpg', '<p><strong>After receiving the news of the death of his elder brother Subash, who worked for R&amp;AW, Jay sets out on a mission to find out what happened leading him into a bigger conspiracy of a possible nuclear attack threat to the country.</strong></p>', '150', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:33:46', '2023-09-29 23:53:01', 1, 0),
+(8, 'Satyaprem Ki Katha', './images/spkk.jpg', '<p><strong>A middle-class boy in Ahmedabad, Satyaprem falling in one-sided love with Katha, who is coping with her breakup with Tapan. Through the journey, they discover each other\'s life and complement in accomplishing what was left halfway.</strong></p>', '260', 7, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:37:28', '2023-09-28 23:37:28', 1, 0),
+(9, 'Pathan', './images/pathan2023.jpg', '<p><strong>Pathaan, an exiled RAW agent, works with ISI agent Rubina Mohsin to take down Jim, a former RAW agent, who plans to attack India with a deadly virus. Produced by Aditya Chopra of Yash Raj Films, the film began principal photography in November 2020 in Mumbai.</strong></p>', '250', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:39:35', '2023-09-29 23:52:44', 1, 0),
+(10, 'Bawaal', './images/bawaal.jpg', '<p><strong>A small-town man who falls in love with the most beautiful girl in town. He wants to marry her one day because marrying her can raise his social position. Every love story has its own war.</strong></p>', '290', 8, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:42:11', '2023-09-29 23:52:21', 1, 0),
+(11, 'IB71', './images/ib71.jpg', '<p><strong>IB71 is a 2023 Indian Hindi-language spy thriller film based on the 1971 Indian Airlines hijacking, written and directed by Sankalp Reddy. It stars Vidyut Jammwal, Vishal Jethwa and Faizan Khan, alongside Anupam Kher, Ashwath Bhatt, Danny Sura and Suvrat Joshi.</strong></p>', '270', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:45:13', '2023-09-28 23:45:13', 1, 0),
+(12, 'Gumraah', './images/gumraah.jpg', '<p><strong>It revolves around a murder investigation which becomes complicated after the police discover two lookalike suspects.</strong></p>', '350', 4, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-28 23:48:25', '2023-09-28 23:48:25', 1, 0),
+(13, 'Bloody Daddy', './images/bloodydaddy.jpg', '<p><strong>A messed up, tenacious man faces off against cops and crime lords to save the one relationship that matters to him. A messed up, tenacious man faces off against cops and crime lords to save the one relationship that matters to him.</strong></p>', '290', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:37:51', '2023-09-29 23:37:51', 1, 0),
+(14, 'Dasara', './images/dasara.jpg', '<p><strong>Dasara&nbsp;tells the story of Dharani who is in love with Vennela (Keerthy Suresh). But she and Dharani\'s best friend Suri are in love and as a child, Dharani &ldquo;sacrifises&rdquo; his love. Things take a turn for the worse when a bar and an evil Sarpanch get in the way and the two men turn towards politics.</strong></p>', '170', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:41:52', '2023-09-29 23:41:52', 1, 0),
+(15, 'Amigos', './images/amigos.jpg', '<p><strong>Three identical men befriend each other through a doppelganger-finding application and things go well until the criminal past of one amongst them emerges.</strong></p>', '230', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:44:42', '2023-09-29 23:44:42', 1, 0),
 (16, 'Chor Nikal Ke Bhaga', './images/cnkb.jpg', '<p><strong>A flight attendant and her boyfriend must steal a cache of diamonds to clear an old debt &mdash; but the plan spins into mayhem when the plane is hijacked</strong>.</p>', '180', 2, '0000-00-00 00:00:00', 0, 1, 1, '2023-09-29 23:57:21', '2023-10-12 21:06:37', 1, 0),
 (17, 'Salaar: Part 1 – Ceasefire', './images/salaar.jpg', '<p><strong>A gang leader tries to keep a promise made to his dying friend and takes on the other criminal gangs. A gang leader tries to keep a promise made to his dying friend and takes on the other criminal gangs.</strong></p>', '180', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-10-03 03:50:40', '2023-10-12 21:05:22', 1, 0),
-(18, 'The Fighter (2024)', './images/thefighter2024.jpg', '', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-10-05 22:46:13', '2023-10-05 23:24:50', 1, 0),
-(19, 'Jawan', './images/extraction2023.jpg', '<p>jrklodfkdfkdl</p>', '', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-10-12 20:41:41', '2023-10-12 20:41:41', 1, 0);
+(18, 'The Fighter (2024)', './images/thefighter2024.jpg', '', '200', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-10-05 22:46:13', '2023-10-05 23:24:50', 1, 0),
+(19, 'Jawan', './images/extraction2023.jpg', '<p>jrklodfkdfkdl</p>', '280', 3, '0000-00-00 00:00:00', 0, 1, 1, '2023-10-12 20:41:41', '2023-10-12 20:41:41', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -172,6 +181,7 @@ CREATE TABLE `users` (
   `user_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `profile` varchar(100) NOT NULL,
+  `client_id` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `phone_no` varchar(100) NOT NULL,
   `created_by` int(10) DEFAULT NULL,
@@ -187,29 +197,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `email`, `profile`, `password`, `phone_no`, `created_by`, `updated_by`, `user_type_id`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
-(1, 'Mitul Maiyani ', 'mitpatel0720@gmail.com', 'public/profiles/Default.jpg', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-10-05 16:01:31', 1, 0),
-(2, 'Kevin Kotadiya', 'kevinkotadiya428@gmail.com', '', '999', '9510935250', NULL, 2, 1, '2023-09-21 22:11:48', '2023-09-22 10:16:24', 1, 0),
-(3, 'test', 'test@gmail.com', 'public/profiles/Default.jpg', '12', 'test', 0, 3, 2, '2023-09-24 22:04:05', '2023-10-03 10:22:20', 1, 0),
-(4, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:06:02', '2023-09-24 22:06:02', 1, 0),
-(5, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:10:31', '2023-09-24 22:10:31', 1, 0),
-(6, 'test', 'test@gmail.com', '', '12', 'test', 0, 0, 2, '2023-09-24 22:12:00', '2023-09-24 22:12:00', 1, 0),
-(7, 'Mitul Maiyani', 'mitpatel0720@gmail.com', '', '9409', '9409002090', 0, 0, 3, '2023-09-30 21:16:51', '2023-09-30 21:16:51', 1, 0),
-(8, 'test', 'test@gmail.com', '', '12', '95747545859', 0, 0, 3, '2023-09-30 21:21:20', '2023-09-30 21:21:20', 1, 0),
-(9, 'test', 'test@gmail.com', 'public/profiles/Default.jpg', '34', '85843694349', 0, 9, 2, '2023-09-30 22:13:50', '2023-09-30 22:14:06', 1, 0),
-(10, 'test', 'test@gmail.com', '', '23', '595854595', 0, 0, 3, '2023-09-30 22:14:52', '2023-09-30 22:14:52', 1, 0),
-(11, 'test', 'test@gmail.com', '', '999', '9999566', 11, 11, 3, '2023-09-30 22:19:25', '2023-09-30 22:19:25', 1, 0),
-(12, 'test', 'test@gmail.com', '', '11', '9409002090', 12, 12, 3, '2023-09-30 22:28:43', '2023-09-30 22:28:43', 1, 0),
-(13, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:30:09', '2023-09-30 22:30:09', 1, 0),
-(14, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:30:41', '2023-09-30 22:30:41', 1, 0),
-(15, 'test', 'test@gmail.com', '', '11', '9409002090', 0, 0, 3, '2023-09-30 22:32:18', '2023-09-30 22:32:18', 1, 0),
-(16, 'test', 'test@gmail.com', '', '34', '8565458687', 0, 0, 3, '2023-10-03 00:39:22', '2023-10-03 00:39:22', 1, 0),
-(17, 'test', 'test@gmail.com', '', '56', '9956569', 0, 0, 2, '2023-10-03 12:24:25', '2023-10-03 12:24:25', 1, 0),
-(18, 'test', 'test@gmail.com', '', '12', '9409002090', 0, 0, 3, '2023-10-03 12:43:06', '2023-10-03 12:43:06', 1, 0),
-(19, 'test', 'test1@gmail.com', '', '123', '8585844559', 0, 0, 3, '2023-10-09 21:50:42', '2023-10-09 21:50:42', 1, 0),
-(20, 'test2', 'test2@gmail.com', '', '123', '123467887', 0, 0, 3, '2023-10-11 15:58:53', '2023-10-11 15:58:53', 1, 0),
-(21, 'test2', 'test2@gmail.com', '', '1234', '8565458687', 0, 0, 2, '2023-10-11 16:04:49', '2023-10-11 16:04:49', 1, 0),
-(22, 'yash', 'yash123@gmail.com', '', '12', '12', 0, 0, 3, '2023-10-11 23:21:03', '2023-10-11 23:21:03', 1, 0);
+INSERT INTO `users` (`id`, `user_name`, `email`, `profile`, `client_id`, `password`, `phone_no`, `created_by`, `updated_by`, `user_type_id`, `created_at`, `updated_at`, `is_active`, `is_deleted`) VALUES
+(1, 'Mitul Maiyani ', 'mitpatel0720@gmail.com', 'public/profiles/Default.jpg', '46e95b53-9e66-46ae-817c-ec673390a91c', '0720', '9409002090', NULL, 1, 1, '2023-09-20 21:16:14', '2023-10-05 16:01:31', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -290,7 +279,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `movie`

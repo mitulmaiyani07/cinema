@@ -26,7 +26,7 @@ if (isset($_POST['change_password'])) {
     $userid = $_SESSION['id'];
     $sql =  "select * from users where id='$userid'";
     $result = $conn->query($sql);
-    $row = $result->fetch_assoc(); 
+    $row = $result->fetch_assoc();
     $curpass =  $_POST['curpassword'];
 
     $newpass =  $_POST['newpassword'];
@@ -54,10 +54,12 @@ $sql = "SELECT u.id,u.user_name,u.email,u.phone_no,u.is_active,ut.type_name FROM
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 
+$booking_query = "SELECT b.tickets,b.transaction_id,t.theatre_name,m.price,b.total_amount,m.id,m.category_id,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc,theatre as t, booking as b where mc.id = m.category_id and m.id=b.movie_id and t.id = b.theatre_id and b.user_id = '" . $_SESSION['id'] . "' order by id"
+
 ?>
 <!-- <a href="/onlineWatchStore/logout.php">logout</a> -->
 
-<div class="container-fluid bg-secondary mb-5">
+<div class="container-fluid">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">My Account</h1>
         <div class="d-inline-flex">
@@ -74,9 +76,9 @@ $row = mysqli_fetch_assoc($result);
             <div class="row">
                 <div class="col-md-4">
                     <ul class="tab-links">
-                        <li class="p-3 active"><a href="account.php" class="link" data-id="my-account">Account Details </a></li>
+                        <li class="p-3 active"><a href="#" class="link" data-id="my-account">Account Details </a></li>
                         <li class="p-3"><a href="#" class="link" data-id="change-password">Change Password </a></li>
-                        <li class="p-3"><a href="booking.php" class="link" data-id="booking">booking </a></li>
+                        <li class="p-3"><a href="#" class="link" data-id="booking">My Bookings</a></li>
                         <li class="p-3"><a href="/cinema/logout.php">Sign Out</a></li>
                     </ul>
                 </div>
@@ -112,26 +114,26 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </form>
                     </div>
-                    <div class="tab-content show" id="chnage-password">
+                    <div class="tab-content" id="change-password">
                         <form method="post">
-                        <?php echo $msg; ?>
+                            <?php echo $msg; ?>
                             <div class="col-12">
                                 <div class="control-group">
-                                    <input type="password" class="form-control" name="curpassword"   placeholder="Current Password" required>
+                                    <input type="password" class="form-control" name="curpassword" placeholder="Current Password" required>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
 
                             <div class="col-12 p-3">
                                 <div class="control-group">
-                                    <input type="password" class="form-control" name="newpassword" id="email" placeholder="New Password" required  />
+                                    <input type="password" class="form-control" name="newpassword" id="email" placeholder="New Password" required />
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
 
                             <div class="col-12 ">
                                 <div class="control-group">
-                                    <input type="password" class="form-control" name="renewpassword" id="subject" placeholder="Current New Password" required >
+                                    <input type="password" class="form-control" name="renewpassword" id="subject" placeholder="Current New Password" required>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -142,7 +144,44 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </form>
                     </div>
-                   
+                    <div class="tab-content" id="booking">
+                        <div class="row">
+                            <?php if ($result = $conn->query($booking_query)) : ?>
+                                <?php while ($row = $result->fetch_assoc()) : ?>
+                                    <div class="col-md-6 item-wrap">
+                                        <div class="movie">
+                                            <figure class="movie-media text-center">
+                                                <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
+                                                    <?php if ($row['movie_image'] != "") : ?>
+                                                        <img src="/cinema/admin/movie/<?php echo str_replace("../", "", $row['movie_image']) ?>" alt="movie image" class="movie-image">
+                                                    <?php else : ?>
+                                                        <img src="/admin/movie/images/bollywood1.jpg" alt="movie image" class="movie-image">
+                                                    <?php endif; ?>
+                                                </a>
+                                            </figure>
+                                            <div class="movie-content py-4">
+                                                <div class="movie-cat">
+                                                    <a href="/cinema/category.php?category_id=<?php echo $row['category_id']; ?>">
+                                                        <?php echo $row['cat_name']; ?>
+                                                    </a>
+                                                    <p>Theatre : <?php echo $row['theatre_name']; ?></p>
+                                                    <p>Tickets : <?php echo $row['tickets']; ?></p>
+                                                    <p>Price : ₹<?php echo $row['price']; ?></p>
+                                                    <p>Total Amount : <?php echo $row['total_amount']; ?></p>
+                                                    <p>Transaction ID : <?php echo $row['transaction_id']; ?></p>
+                                                </div>
+                                                <h3 class="movie-title">
+                                                    <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
+                                                        <?php echo $row['movie_name']; ?>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

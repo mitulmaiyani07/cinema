@@ -2,7 +2,7 @@
 $title = "Movies";
 require('header.php');
 $category_id = $_GET['category_id'];
-$query = "SELECT m.id,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id and m.category_id = " . $category_id . " order by id";
+$query = "SELECT m.id,m.movie_image,m.price,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id and m.category_id = " . $category_id . " order by id";
 
 $cat_query = "Select * from movie_category where id=" . $category_id;
 $cat_result = mysqli_query($conn, $cat_query);
@@ -38,6 +38,7 @@ $cat_data = $cat_result->fetch_assoc();
                     <p>
                       <?php echo $row['cat_name']; ?>
                     </p>
+                    <p>₹<?php echo $row['price']; ?></p>
                   </div>
                   <h3 class="product-title">
                     <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">

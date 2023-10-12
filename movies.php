@@ -2,7 +2,7 @@
 $title = "Movies";
 
 ?>
-<?php $query = "SELECT m.id,m.category_id,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id order by id";
+<?php $query = "SELECT m.id,m.category_id,m.price,m.movie_image,m.movie_name,mc.cat_name,m.created_at,m.is_active FROM movie as m,movie_category as mc where mc.id = m.category_id order by id";
 if (isset($_POST['book'])) {
   $current_user_id = "";
   if (isset($_SESSION['id'])) {
@@ -57,6 +57,7 @@ require('header.php');
                     <a href="/cinema/category.php?category_id=<?php echo $row['category_id']; ?>">
                       <?php echo $row['cat_name']; ?>
                     </a>
+                    <p>₹<?php echo $row['price']; ?></p>
                   </div>
                   <h3 class="movie-title">
                     <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
@@ -69,7 +70,7 @@ require('header.php');
                       <input type="hidden" name="movie_name" value="<?php echo $row['movie_name']; ?>" />
                       <input type="hidden" name="movie_image"
                         value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
-                        <a class="btn" href="booking.php">Book Now</a>
+                        <a class="btn" href="booking.php?movie=<?php echo $row['id']; ?>">Book Now</a>
                     </form>
                   </div><!-- End .movie-action -->
                 </div>

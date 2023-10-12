@@ -19,7 +19,7 @@ if (isset($_POST['add_create'])) {
   $user_type_id = 3;
 
   if ($password === $confirm_password) {
-    $sql = "insert into users (user_name,email,phone_no,password,user_type_id,created_at,created_by,updated_by,updated_at,is_active,is_deleted) values ('$user_name','$email','$phone_no','$password','$user_type_id',now(),'$last_id','$last_id',now(),true,false)";
+    $sql = "insert into users (user_name,email,phone_no,password,user_type_id,created_at,updated_at,is_active,is_deleted) values ('$user_name','$email','$phone_no','$password','$user_type_id',now(),now(),true,false)";
 
     if (mysqli_query($conn, $sql)) {
       $last_id = mysqli_insert_id($conn);
