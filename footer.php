@@ -22,8 +22,6 @@
                     <a href="#"><img src="icon/email.png" alt="#" /></a>mitpatel0720@gmail.com
                   </li>
                 </ul>
-
-
               </div>
             </div>
 
