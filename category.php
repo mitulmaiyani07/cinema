@@ -19,16 +19,15 @@ $cat_data = $cat_result->fetch_assoc();
         </div>
       </div>
       <div class="row">
-        <?php if ($result = $conn->query($query)): ?>
-          <?php while ($row = $result->fetch_assoc()): ?>
+        <?php if ($result = $conn->query($query)) : ?>
+          <?php while ($row = $result->fetch_assoc()) : ?>
             <div class="col-md-4 item-wrap">
               <div class="movie">
                 <figure class="movie-media text-center">
                   <a href="/cinema/movie.php?id=<?php echo $row['id']; ?>">
-                    <?php if ($row['movie_image'] != ""): ?>
-                      <img src="/cinema/admin/movie/<?php echo str_replace("../", "", $row['movie_image']) ?>"
-                        alt="Product image" class="product-image">
-                    <?php else: ?>
+                    <?php if ($row['movie_image'] != "") : ?>
+                      <img src="/cinema/admin/movie/<?php echo str_replace("../", "", $row['movie_image']) ?>" alt="Product image" class="product-image">
+                    <?php else : ?>
                       <img src="/admin/movie/images/bollywood1.jpg" alt="Product image" class="product-image">
                     <?php endif; ?>
                   </a>
@@ -49,10 +48,8 @@ $cat_data = $cat_result->fetch_assoc();
                     <form method="post">
                       <input type="hidden" name="movie_id" value="<?php echo $row['id']; ?>" />
                       <input type="hidden" name="movie_name" value="<?php echo $row['movie_name']; ?>" />
-                      <input type="hidden" name="movie_image"
-                        value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
-                      <button type="submit" name="book" class="btn btn-movies btn-book"><span>Book
-                          Now</span></button>
+                      <input type="hidden" name="movie_image" value="<?php echo str_replace("../", "", $row['movie_image']) ?>" />
+                      <a class="btn" href="booking.php?movie=<?php echo $row['id']; ?>">Book Now</a>
                     </form>
                   </div>
                 </div>

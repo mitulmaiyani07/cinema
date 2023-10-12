@@ -79,7 +79,7 @@ $user_data = mysqli_fetch_assoc($user_result);
                     </div>
                     <div class="col-md-6">
                         <label class="m-0">Number of tickets</label>
-                        <input class="contactus" id="tickets" type="number" name="tickets" required min="1" max="5">
+                        <input class="contactus" id="tickets" type="number" name="tickets" required min="1" max="5" value="1">
                     </div>
                     <div class="col-md-6">
                         <label class="m-0">Date</label>

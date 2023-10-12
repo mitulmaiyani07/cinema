@@ -30,6 +30,9 @@ require('header.php');
         <div class="row card">
           <div class="col-md-12">
             <h1 class="mt-5">Login</h1>
+            <?php if ($error_msg != "") : ?>
+              <div class="alert alert-danger"><?php echo $error_msg; ?></div>
+            <?php endif; ?>
             <div class="col-md-12">
               <input class="contactus" placeholder="Your Email" type="email" name="email" required>
             </div>

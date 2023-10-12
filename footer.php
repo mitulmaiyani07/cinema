@@ -16,11 +16,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
               <div class="address">
                 <ul class="loca">
-                  <li>
-                    <a href="#"><img src="icon/loc.png" alt="#" /></a>Locations
-                  <li>
-
-                    <a href="#"><img src="icon/call.png" alt="#" /></a>+91 9409002090
+                  <a href="#"><img src="icon/call.png" alt="#" /></a>+91 9409002090
                   </li>
                   <li>
                     <a href="#"><img src="icon/email.png" alt="#" /></a>mitpatel0720@gmail.com
@@ -52,10 +48,10 @@
 <script src="js/custom.js"></script>
 <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
-  $(function () {
+  $(function() {
     var url = window.location.pathname,
       urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
-    $('.main-menu a').each(function () {
+    $('.main-menu a').each(function() {
       if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
         $(this).parent().addClass('active');
       }
