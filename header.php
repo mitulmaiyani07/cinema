@@ -147,7 +147,7 @@ if (isset($_SESSION['id']) && $_SESSION['id'] != "") {
     .tab-content.show {
       display: block;
     }
-    .menu-area-main li.active a{ background-color: #960202 !important; }
+    .menu-area-main li.active a{ background-color: #960202 !important; padding: 5px 25px !important; }
   </style>
 </head>
 
